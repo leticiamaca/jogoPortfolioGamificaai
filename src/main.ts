@@ -1,4 +1,4 @@
-import { Engine } from "excalibur";
+import { Engine, FadeInOut } from "excalibur";
 import { welcomeScene } from "./scenes/welcomeScene";
 import { loader } from "./resources";
 import { historyScene } from "./scenes/historyScene";
@@ -10,7 +10,7 @@ const game = new Engine({
 
 })
 game.addScene("bemvindo", new welcomeScene())
-game.addScene("historia", new historyScene())
+game.addScene("historia", new historyScene(), )
 game.start(loader).then(() => {
   game.goToScene('bemvindo')
 

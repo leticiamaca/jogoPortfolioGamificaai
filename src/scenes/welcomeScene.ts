@@ -4,16 +4,28 @@ import {
   Actor,
   Color,
   Engine,
+  FadeInOut,
   Font,
   Keys,
   Label,
   Scene,
   TextAlign,
+  Transition,
   vec,
 } from "excalibur";
 import { Resources } from "../resources";
 
+
+
 export class welcomeScene extends Scene {
+    onTransition(direction: "in" | "out"): Transition | undefined {
+        return new FadeInOut({
+          direction: direction,
+        color: Color.Black,
+        duration: 1000  
+        })
+        
+    }
   onInitialize(engine: Engine<any>): void {
     this.backgroundColor = Color.Gray;
 
@@ -74,7 +86,7 @@ export class welcomeScene extends Scene {
       //Caso a tecla pressionada seja enter
       if (event.key == Keys.Enter) {
         // Redirecionando para a próxima cena  Historia
-        engine.goToScene("historia");
+        engine.goToScene("historia")
       }
     });
   }
