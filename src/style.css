@@ -16,11 +16,41 @@
   justify-content: center;
   align-items: center;
   position: relative;
+  margin: 20px auto;
+}
+
+
+.container-game-segundacena{
+  height: 800px;
+  width: 1200px;
+  display: flex;
+  
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin: 20px auto;
+}
+
+
+
+.sobre-gamifica-segunda-cena{
+  width: 400px;
+  height: 500px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 30px;
+  color: black;
+  font-family: "Anta";
+  position: absolute;
+  top: 10%;
+  right: 5%;
+  
+  border: solid 15px #cf5830;
 }
 
 .sobre-gamifica{
-  width: 500px;
-  height: 600px;
+  width: 400px;
+  height: 500px;
   padding: 40px;
   background-color: white;
   border-radius: 30px;
@@ -29,6 +59,7 @@
   position: absolute;
   top: 10%;
   left: 5%;
+  
   border: solid 15px #cf5830;
 }
 
@@ -38,6 +69,19 @@
   text-align: center;
 }
 .sobre-gamifica p{
+  text-align: justify;
+  font-size: 16px;
+  line-height: 2;
+}
+
+
+.sobre-gamifica-segunda-cena h2{
+  margin-bottom: 40px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.sobre-gamifica-segunda-cena p{
   text-align: justify;
   font-size: 16px;
   line-height: 2;

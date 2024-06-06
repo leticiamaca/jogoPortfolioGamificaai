@@ -27,7 +27,7 @@ export class welcomeScene extends Scene {
         
     }
   onInitialize(engine: Engine<any>): void {
-    this.backgroundColor = Color.Gray;
+    this.backgroundColor = Color.Black;
 
     //Configura objeto para ser a frase de bem-vindo
     let fraseBemVindo = new Label({

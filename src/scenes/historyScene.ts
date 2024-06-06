@@ -1,10 +1,27 @@
-import {Engine, Scene, Color, FadeInOut, Transition, Actor, Resource, vec, Keys} from 'excalibur'
+import {Engine, Scene, Color, FadeInOut, Transition, Actor, Resource, vec, Keys, SceneActivationContext} from 'excalibur'
 import { Resources } from '../resources'
 
 export class historyScene extends Scene {
 //é meio que uma configuração global, por isso é colocado em cima de tudo
 //Declaração do elementoTexto
 elementoTexto?: HTMLElement
+// Método para esmaecer um elemento HTML
+fadeOutElement(elemento: HTMLElement){
+//Pegar opacidade do elemento HTML
+let opacidade = parseFloat(elemento.style.opacity)
+//Repetir diminuição da opacidade
+setInterval(() => {
+// Se elemento ainda está visível
+if (opacidade > 0){
+    //Diminuir a opacidade
+opacidade -= 0.01
+elemento.style.opacity = opacidade.toString()
+
+}
+
+}, 20)
+
+}
 
 
     onTransition(direction: "in" | "out"): Transition | undefined {
@@ -18,7 +35,7 @@ elementoTexto?: HTMLElement
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.fromHex('#403f4c')
 
-        //Criar elemnto com a descrição da empresa
+        //Criar elemento com a descrição da empresa
         this.elementoTexto = document.createElement("div") as HTMLElement
         //Definir opacidade do elemento para 1 = visível
         this.elementoTexto.style.opacity = "1"
@@ -31,7 +48,7 @@ elementoTexto?: HTMLElement
         //Adicionar classe na div criada (elementoTexto)
         this.elementoTexto.classList.add("sobre-gamifica")
 
-        //Adicionar tituloo e paragrafo dentro do conteudo da div
+        //Adicionar titulo e paragrafo dentro do conteudo da div
         this.elementoTexto.innerHTML =  `<h2>Sobre o Gamifica Ai</h2>
         <p>
           Nossa empresa cria soluções de gamificação personalizadas para empresas de todos os tamanhos e setores,
@@ -42,6 +59,12 @@ elementoTexto?: HTMLElement
         </p>`
 
 
+
+//   //Configurar Frase Enter na tela para ficar piscando
+//   fraseEnter.actions.repeatForever((fraseEnter) => {
+//     fraseEnter.fade(0, 1000);
+//     fraseEnter.fade(1, 1000);
+//   });
         let gamificaaiVertical = new Actor({
 pos: vec(890, 350)
         })
@@ -55,11 +78,20 @@ pos: vec(890, 350)
         //Configurar a cena para monitorar o evento de tecla pressionada
         this.input.keyboard.on("press", (event) => {
             if(event.key == Keys.Enter){
+                //Chamando a função para criar transição suave do elemento texto
+                this.fadeOutElement(this.elementoTexto!)
+
                 //Direcionar para a próxima cena
                 engine.goToScene("gamificacao")
+
+
             }
         } )
 
 
+    }
+    onDeactivate(context: SceneActivationContext<undefined>): void {
+        // Remover elemento texto da tela
+        this.elementoTexto?.remove()
     }
 }
