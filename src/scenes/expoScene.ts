@@ -10,6 +10,7 @@ import {
 } from "excalibur";
 import { Resources } from "../resources";
 import { Player } from "../actors/player";
+import { Npc } from "../actors/npc";
 
 export class expoScene extends Scene {
   elemento?: HTMLElement;
@@ -46,12 +47,51 @@ export class expoScene extends Scene {
     //Definir zoom da camera para aumentar um pouco a visualização
     this.camera.zoom = 1.4;
 
+//Carregar spawnpoint do player
+let spawnPoint = tiledMap.getObjectsByName('player_spawn')[0]
+
     // Criação e configuração do Player
-    let jogador = new Player();
-    jogador.z = 4;
+    let jogador = new Player(vec(spawnPoint.x + offsetX, spawnPoint.y + offsetY));
+    jogador.z = 5;
 
     //Adicionando o player na cena
     this.add(jogador);
+//Pegar sapawn dos npc's
+    let npcSpawnPointA = tiledMap.getObjectsByName("npc_a")[0]
+    let npcSpawnPointB = tiledMap.getObjectsByName("npc_b")[0]
+    let npcSpawnPointC = tiledMap.getObjectsByName("npc_c")[0]
+
+
+
+//configurar npc
+let npcA = new Npc(
+  vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),
+  Color.Blue,
+  "NpcA"
+)
+
+let npcB = new Npc(
+  vec(npcSpawnPointB.x + offsetX, npcSpawnPointB.y + offsetY),
+  Color.Blue,
+  "NpcB"
+)
+let npcC = new Npc(
+  vec(npcSpawnPointC.x + offsetX, npcSpawnPointC.y + offsetY),
+  Color.Blue,
+  "NpcC"
+)
+
+//Adicionar os NPC'S 
+this.add(npcA)
+this.add(npcB)
+this.add(npcC)
+
+//Focar a camÊra do player
+this.camera.strategy.lockToActor(jogador)
+
+
+
+
     // Adicionar colisão com cada objeto
     //Pegar a camada de objetos colisores
     let camadaObjetosColisores =
