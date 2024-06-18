@@ -40,6 +40,15 @@ export class expoScene extends Scene {
     let offsetX = 138;
     let offsetY = 100;
 
+    //carregar musica de fundo (BGM) 
+let musicaFundo = Resources.SoundBGM
+
+//Configurar e executar a música
+musicaFundo.loop = true
+// musicaFundo.play(0.5)
+
+
+
     //Adicionando cena do mapa na tela
     tiledMap.addToScene(this, {
       pos: vec(offsetX, offsetY),

@@ -17,7 +17,7 @@ import { Resources } from "../resources";
 export class Player extends Actor {
   //Propriedades do player
   private velocidade: number = 180;
-  private ultimaDirecao: string = "down";
+  private ultimaDirecao: string = "up";
   private temObjetoProximo: boolean = false
   private ultimoColisor?: Collider
 
@@ -111,6 +111,8 @@ export class Player extends Actor {
       frameDuration: duracaoFrameAnimacao,
     });
     this.graphics.add("down-idle", downIdle);
+    //posição padrão quando carrega o jogo
+    this.graphics.use("down-idle")
 
     //Definir animação inicial do player
     //this.graphics.use(downIdle)
@@ -246,15 +248,53 @@ export class Player extends Actor {
 
       }
     });
+
+
+    //Configura o player para monitorar evento "press" -> pressionar
+    engine.input.keyboard.on("press", (event) => {
+      //Se a tecla for a f
+      //Se a tecla pressionada for a F e tiver objeto próximo
+      if(event.key == Keys.F && this.temObjetoProximo){
+
+       //Identificar o alvo da interação 
+       if (this.ultimoColisor?.owner.name == "mesa_stand_a") {
+        console.log("essa é a mesa A")
+        //Vai para a cena passando qual o objeto da interação
+        engine.goToScene("case", {
+          sceneActivationData: {
+            nomeDoActor: this.ultimoColisor?.owner.name
+          }
+        })
+
+       }
+       //Identificar o alvo da interação 
+       if (this.ultimoColisor?.owner.name == "mesa_stand_b") {
+        console.log("essa é a mesa B")
+        //Vai para a cena passando qual o objeto da interação
+        engine.goToScene("case", {
+          sceneActivationData: {
+            nomeDoActor: this.ultimoColisor?.owner.name
+          }
+        })
+       }
+       //Identificar o alvo da interação 
+       if (this.ultimoColisor?.owner.name == "mesa_stand_c") {
+        console.log("essa é a mesa C")
+        //Vai para a cena passando qual o objeto da interação
+        engine.goToScene("case", {
+          sceneActivationData: {
+            nomeDoActor: this.ultimoColisor?.owner.name
+          }
+        })
+       }
+      }
+    })
   }
   onPreCollisionResolve(self: Collider, other: Collider, side: Side, contact: CollisionContact): void {
 //Indicar que tm um objeto próximo
 this.temObjetoProximo = true
 // Registrar o ultimo objeto colidido
 this.ultimoColisor = other
-  }
-  onPostCollisionResolve(self: Collider, other: Collider, side: Side, contact: CollisionContact): void {
-    
   }
 // Ao iniciar atualização de frame
   onPreUpdate(engine: Engine<any>, delta: number): void {

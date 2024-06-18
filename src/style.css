@@ -74,6 +74,31 @@
   line-height: 2;
 }
 
+.case{
+  width: 400px;
+  height: 500px;
+  padding: 40px;
+  background-color: white;
+  border-radius: 30px;
+  color: black;
+  font-family: "Anta";
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  
+  border: solid 15px #cf5830;
+}
+
+.case p{
+  text-align: justify;
+  font-size: 24px;
+  line-height: 2;
+}
+
+.sobre-case{
+  background-color: #cf5830;
+}
+
 
 .sobre-gamifica-segunda-cena h2{
   margin-bottom: 40px;
