@@ -21,6 +21,9 @@ export class Player extends Actor {
   private temObjetoProximo: boolean = false
   private ultimoColisor?: Collider
 
+
+
+
   // Configuração do player
   constructor(posicao: Vector) {
     super({
@@ -33,6 +36,8 @@ export class Player extends Actor {
       collisionType: CollisionType.Active,
     });
   }
+
+ 
 
   onInitialize(engine: Engine<any>): void {
     // Configurar spriteSheet do player
@@ -306,3 +311,4 @@ this.ultimoColisor = other
     
   }
 }
+

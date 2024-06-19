@@ -74,7 +74,7 @@
   line-height: 2;
 }
 
-.case{
+.texto-case{
   width: 400px;
   height: 500px;
   padding: 40px;
@@ -89,14 +89,12 @@
   border: solid 15px #cf5830;
 }
 
-.case p{
+.texto-case{
   text-align: justify;
   font-size: 24px;
   line-height: 2;
-}
-
-.sobre-case{
-  background-color: #cf5830;
+  top: 10%;
+  left: 5%;
 }
 
 

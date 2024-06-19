@@ -76,6 +76,9 @@ let spawnPoint = tiledMap.getObjectsByName('player_spawn')[0]
 let npcA = new Npc(
   vec(npcSpawnPointA.x + offsetX, npcSpawnPointA.y + offsetY),
   Color.Blue,
+
+   
+   
   "NpcA"
 )
 

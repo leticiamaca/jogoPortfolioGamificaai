@@ -20,7 +20,9 @@ import tsxEstoquePath from "./maps/tileset_estoque.tsx?url"
 import tsxBibliotecaPath from "./maps/tileset_biblioteca.tsx?url"
 import tmxMapaPath from "./maps/showroom_map.tmx?url"
 import playerSpritePath from "./sprites/Jogador.png"
-
+import npcASpritePlayer from "./sprites/Npc-A.png"
+import npcBSpritePlayer from "./sprites/Npc-B.png"
+import npcCSpritePlayer from "./sprites/Npc-C.png"
 
 export const Resources = {
   SoundBGM: new Sound(soundBGM),
@@ -32,6 +34,10 @@ export const Resources = {
   NpcC: new ImageSource(npcC),
   SegundoLogoVertical: new ImageSource(segundoLogoVertical),
   PlayerSpriteSheet: new ImageSource(playerSpritePath, {filtering: ImageFiltering.Pixel}),
+  NpcASpritePlayer: new ImageSource(npcASpritePlayer,{filtering: ImageFiltering.Pixel}),
+  NpcBSpritePlayer: new ImageSource(npcBSpritePlayer,{filtering: ImageFiltering.Pixel}),
+  NpcCSpritePlayer: new ImageSource(npcCSpritePlayer,{filtering: ImageFiltering.Pixel}),
+
   Mapa: new TiledResource(tmxMapaPath, {
     pathMap: [
       {path: "showroom_map.tmx", output: tmxMapaPath},

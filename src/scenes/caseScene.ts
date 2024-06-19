@@ -1,8 +1,10 @@
-import { Actor, Color, Engine, FadeInOut, Keys, Resource, Scene, SceneActivationContext, Transition, vec } from "excalibur";
+import { Actor, Color, Engine, FadeInOut, Keys, Resource, Scene, SceneActivationContext, Sprite, Transition, vec } from "excalibur";
 import { Resources } from "../resources";
 
 export class caseScene extends Scene {
     private objetointeração: any
+    private npcCase?: Actor
+    private listaImagens?: Sprite[]
 
     private textoDacena?: string
     elementotexto1?: HTMLElement
@@ -15,94 +17,90 @@ export class caseScene extends Scene {
     //     })
     // }
 
+    //onInitialize só roda uma vez, então fazemos as funções do case no onActivate pois ele roda toda a vez, sem ser algo padrão
     onInitialize(engine: Engine<any>): void {
         this.backgroundColor = Color.Gray
+
+        //Criar elemento com a descrição do case
+        this.elementotexto1 = document.createElement('div') as HTMLElement
+        this.elementotexto1.classList.add('texto-case')
+
+        //Adicionar o elemento ao container game
+        let containerGame = document.querySelector(".container-game")
+        containerGame?.appendChild(this.elementotexto1)
     }
 
     onActivate(context: SceneActivationContext<unknown>): void {
         // Pegar dados vindos da cena passada
         this.objetointeração = context.data
-
-        console.log(this.objetointeração);
+          this.elementotexto1!.style.opacity = "1"
 
         // se for a mesa a 
         if (this.objetointeração.nomeDoActor == "mesa_stand_a") {
             // this.textoDacena = "Essa é a descrição do case a"
+            this.elementotexto1!.innerHTML = `</p>Case da Merenda<p>`
 
-            this.elementotexto1 = document.createElement("div") as HTMLElement
-            this.elementotexto1.style.opacity = "1"
-            let containergame = document.querySelector(".container-game") as HTMLElement
-            containergame.appendChild(this.elementotexto1)
-            this.elementotexto1.classList.add("case")
-            this.elementotexto1.innerHTML = "<p> Case da merenda </p>"
-            let npc_a = new Actor({
-                pos: vec(850,400)
-            })
-let imagemCaseA = Resources.NpcA.toSprite()
-npc_a.graphics.add(imagemCaseA)
-imagemCaseA.scale = vec(1.5, 1.5)
-            this.add(npc_a)
-
+            //Inserir o Sprite no actor da mesa a
+            this.npcCase?.graphics.add(this.listaImagens![0])
+            //Mudar o zoom
+            this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
+            this.add(this.npcCase!)
+         
         }
 
 
 
         // se for a b
         if (this.objetointeração.nomeDoActor == "mesa_stand_b") {
-            
-            this.elementotexto1 = document.createElement("div") as HTMLElement
-            this.elementotexto1.style.opacity = "1"
-            let containergame = document.querySelector(".container-game") as HTMLElement
-            containergame.appendChild(this.elementotexto1)
-            this.elementotexto1.classList.add("case")
-            this.elementotexto1.innerHTML = "<p> Case da escola </p"
-            let npc_b = new Actor({
-                pos: vec(850,400)
-            })
-let imagemCaseB = Resources.NpcB.toSprite()
-npc_b.graphics.add(imagemCaseB)
-imagemCaseB.scale = vec(1.5, 1.5)
-            this.add(npc_b)
-
+              this.elementotexto1!.innerHTML = `</p>Case do escritório<p>`
+                 //Inserir o Sprite no actor da mesa b
+            this.npcCase?.graphics.add(this.listaImagens![1])
+                 //Mudar o zoom
+                 this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
+                 this.add(this.npcCase!)
+         
         }
 
         // se for a c
         if (this.objetointeração.nomeDoActor == "mesa_stand_c") {
-            this.textoDacena = "Essa é a descrição do case c"
+          this.elementotexto1!.innerHTML = `</p>Case da Sala de aula<p>`
+                //Inserir o Sprite no actor da mesa c
+                this.npcCase?.graphics.add(this.listaImagens![2])
+                     //Mudar o zoom
+            this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
+            this.add(this.npcCase!)
             
-            this.elementotexto1 = document.createElement("div") as HTMLElement
-            this.elementotexto1.style.opacity = "1"
-            let containergame = document.querySelector(".container-game") as HTMLElement
-            containergame.appendChild(this.elementotexto1)
-            this.elementotexto1.classList.add("case")
-            this.elementotexto1.innerHTML = "<p>case dos funcionários</p>"
-            let npc_c = new Actor({
-                pos: vec(850,400)
-            })
-let imagemCaseC = Resources.NpcC.toSprite()
-npc_c.graphics.add(imagemCaseC)
-imagemCaseC.scale = vec(1.5, 1.5)
-            this.add(npc_c)
-
         }
+//Adicionando o player na tela, e como é algo que acontece para todos não é necessário colocar um em cada um, colocamos de uma forma global para dar certo para todos
+      
+
+
 
           //Configurar a cena para monitorar o evento de tecla pressionada
           this.input.keyboard.on("press", (event) => {
-            if(event.key == Keys.F){
-                //Chamando a função para criar transição suave do elemento texto
-        
-
+            if(event.key == Keys.Esc){
                 //Direcionar para a próxima cena
                 this.engine.goToScene("exposicao")
-
-
             }
-        } )
+        })
+
+        //Criar actor para receber a imagem
+        this.npcCase = new Actor({
+            pos: vec(this.engine.drawWidth - 300, this.engine.drawHeight - 50)
+        })
+
+        //Carregar imagem dos NPC'S
+        let imagemNpcUm = Resources.NpcA.toSprite()
+        let imagemNpcDois = Resources.NpcB.toSprite()
+        let imagemNpcTres = Resources.NpcC.toSprite()
+        
+        this.listaImagens = [imagemNpcUm, imagemNpcDois, imagemNpcTres] //Colocando essas imagens em uma lista para ficar mais organizado
+        
 
     }
    
     onDeactivate(context: SceneActivationContext<undefined>): void {
-        this.elementotexto1?.remove()
+        this.elementotexto1!.style.opacity = "0"
     }
 
 }
