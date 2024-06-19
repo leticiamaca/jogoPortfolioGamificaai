@@ -28,6 +28,18 @@ export class caseScene extends Scene {
         //Adicionar o elemento ao container game
         let containerGame = document.querySelector(".container-game")
         containerGame?.appendChild(this.elementotexto1)
+
+        this.npcCase = new Actor({
+            pos: vec(engine.drawWidth - 300, engine.halfDrawHeight),
+        })
+
+         //Carregar imagem dos NPC'S
+         let imagemNpcUm = Resources.NpcA.toSprite()
+         let imagemNpcDois = Resources.NpcB.toSprite()
+         let imagemNpcTres = Resources.NpcC.toSprite()
+         
+         this.listaImagens = [imagemNpcUm, imagemNpcDois, imagemNpcTres] //Colocando essas imagens em uma lista para ficar mais organizado
+         
     }
 
     onActivate(context: SceneActivationContext<unknown>): void {
@@ -39,12 +51,13 @@ export class caseScene extends Scene {
         if (this.objetointeração.nomeDoActor == "mesa_stand_a") {
             // this.textoDacena = "Essa é a descrição do case a"
             this.elementotexto1!.innerHTML = `</p>Case da Merenda<p>`
-
-            //Inserir o Sprite no actor da mesa a
             this.npcCase?.graphics.add(this.listaImagens![0])
             //Mudar o zoom
-            this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
-            this.add(this.npcCase!)
+            this.npcCase!.graphics.current!.scale = vec(1.7, 1.7)
+            
+      
+            
+        
          
         }
 
@@ -56,8 +69,9 @@ export class caseScene extends Scene {
                  //Inserir o Sprite no actor da mesa b
             this.npcCase?.graphics.add(this.listaImagens![1])
                  //Mudar o zoom
-                 this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
-                 this.add(this.npcCase!)
+                 this.npcCase!.graphics.current!.scale = vec(1.7, 1.7)
+               
+                
          
         }
 
@@ -67,12 +81,14 @@ export class caseScene extends Scene {
                 //Inserir o Sprite no actor da mesa c
                 this.npcCase?.graphics.add(this.listaImagens![2])
                      //Mudar o zoom
-            this.npcCase!.graphics.current!.scale = vec(0.2, 0.2)
-            this.add(this.npcCase!)
+            this.npcCase!.graphics.current!.scale = vec(1.7,1.7)
+          
             
-        }
+            
+        }  
+        
 //Adicionando o player na tela, e como é algo que acontece para todos não é necessário colocar um em cada um, colocamos de uma forma global para dar certo para todos
-      
+      this.add(this.npcCase!)
 
 
 
@@ -84,18 +100,8 @@ export class caseScene extends Scene {
             }
         })
 
-        //Criar actor para receber a imagem
-        this.npcCase = new Actor({
-            pos: vec(this.engine.drawWidth - 300, this.engine.drawHeight - 50)
-        })
-
-        //Carregar imagem dos NPC'S
-        let imagemNpcUm = Resources.NpcA.toSprite()
-        let imagemNpcDois = Resources.NpcB.toSprite()
-        let imagemNpcTres = Resources.NpcC.toSprite()
-        
-        this.listaImagens = [imagemNpcUm, imagemNpcDois, imagemNpcTres] //Colocando essas imagens em uma lista para ficar mais organizado
-        
+       
+       
 
     }
    
