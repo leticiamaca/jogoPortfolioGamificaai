@@ -50,7 +50,10 @@ export class caseScene extends Scene {
         // se for a mesa a 
         if (this.objetointeração.nomeDoActor == "mesa_stand_a") {
             // this.textoDacena = "Essa é a descrição do case a"
-            this.elementotexto1!.innerHTML = `</p>Case da Merenda<p>`
+            this.elementotexto1!.innerHTML =`<h2>XYZ Tech - Transformação Digital e Capacitação na Tecnologia</h2>
+            <p>A empresa enfrentava dificuldades na adoção de novas tecnologias pelos funcionários, resultando em baixa eficiência e resistência às mudanças.</p>
+            <p>A XYZ Tech Solutions implementou uma plataforma de treinamento gamificada, onde os funcionários ganhavam pontos e badges ao completar módulos de treinamento sobre novas tecnologias. Eles podiam ver seu progresso em um leaderboard, incentivando uma competição saudável.</p>            
+            <p> APERTE ESC PARA SAIR </p>`
             this.npcCase?.graphics.add(this.listaImagens![0])
             //Mudar o zoom
             this.npcCase!.graphics.current!.scale = vec(1.7, 1.7)
@@ -65,7 +68,10 @@ export class caseScene extends Scene {
 
         // se for a b
         if (this.objetointeração.nomeDoActor == "mesa_stand_b") {
-              this.elementotexto1!.innerHTML = `</p>Case do escritório<p>`
+              this.elementotexto1!.innerHTML = `<h2>ABC Finance - Incentivo à Cultura de Inovação</h2>
+            <p>A empresa queria incentivar os funcionários a proporem ideias inovadoras para melhorar processos e produtos, mas havia pouca participação.
+            <p>ABC Finance criou um programa chamado "InovaABC" onde os funcionários podiam submeter ideias e ganhar pontos. As ideias eram votadas pelos colegas e avaliadas por um comitê. Os funcionários com as melhores ideias ganhavam prêmios e reconhecimento trimestral.
+            <p> APERTE ESC PARA SAIR </p>`
                  //Inserir o Sprite no actor da mesa b
             this.npcCase?.graphics.add(this.listaImagens![1])
                  //Mudar o zoom
@@ -77,7 +83,10 @@ export class caseScene extends Scene {
 
         // se for a c
         if (this.objetointeração.nomeDoActor == "mesa_stand_c") {
-          this.elementotexto1!.innerHTML = `</p>Case da Sala de aula<p>`
+          this.elementotexto1!.innerHTML = `<h2>FastMart - Melhoria na Experiência do Cliente</h2>
+            <p>A empresa de varejo enfrentava problemas com o atendimento ao cliente, resultando em baixa satisfação e retenção de clientes.
+            <p>FastMart lançou uma aplicação interna onde os atendentes ganhavam pontos ao fornecer um excelente atendimento ao cliente, baseado em avaliações dos próprios clientes e supervisores. Os melhores atendentes eram destacados no mural da empresa e recebiam recompensas.
+            <p> APERTE ESC PARA SAIR </p>`
                 //Inserir o Sprite no actor da mesa c
                 this.npcCase?.graphics.add(this.listaImagens![2])
                      //Mudar o zoom

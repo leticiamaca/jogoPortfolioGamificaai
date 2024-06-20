@@ -85,16 +85,15 @@
   position: absolute;
   top: 10%;
   left: 5%;
-  
   border: solid 15px #cf5830;
+   text-align: justify;
+  font-size: 17px;
+  line-height: 2;
 }
 
-.texto-case{
-  text-align: justify;
-  font-size: 24px;
-  line-height: 2;
-  top: 10%;
-  left: 5%;
+ 
+.texto-case h2{
+  font-size: 22px;
 }
 
 
