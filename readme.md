@@ -5,6 +5,8 @@ O projeto foi criado com o objetivo de transformar a experiência de navegação
 
 Esse foi meu primeiro contato com desenvolvimento de jogos, trazendo aprendizados importantes sobre lógica de jogos, movimentação, cenários e integração de ferramentas externas.
 
+<img src="./play.png"></img>
+
 ## 🚀 Tecnologias utilizadas
 
 - TypeScript
@@ -29,6 +31,9 @@ A experiência foi pensada para tornar a navegação mais envolvente, permitindo
 - Navegação interativa
 - Experiência gamificada
 - Portfólio em formato de jogo web
+
+<img src="./home.png"></img>
+
 
 ## 🗺️ Ferramentas utilizadas
 
