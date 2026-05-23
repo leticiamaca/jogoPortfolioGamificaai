@@ -1,4 +1,4 @@
-# GamificaAI - Portfólio Interativo em Forma de Jogo
+# GamificaAI - Portfólio Interativo em Forma de Jogo - Primeiros contatos com desenvolvimento de jogos, aplicação feita em 2024
 
 Um portfólio web interativo desenvolvido em formato de jogo 2D para a empresa GamificaAI.  
 O projeto foi criado com o objetivo de transformar a experiência de navegação em algo mais dinâmico, divertido e imersivo, utilizando conceitos de gamificação aplicados ao desenvolvimento web.
